@@ -1,0 +1,11 @@
+server:
+  port : 8081
+
+spring:
+  application:
+    name: myservice
+
+  activemq:
+    broker-url: tcp://LAPTOP-2GEPBFC5:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+    user: admin
+    password: admin

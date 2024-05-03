@@ -7,9 +7,9 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AMQPublisher {
+public class MQPublisher {
 
-    private static final Logger logger = LoggerFactory.getLogger(AMQPublisher.class);
+    private static final Logger logger = LoggerFactory.getLogger(MQPublisher.class);
     @Autowired
     JmsTemplate jmsTemplate;
 

@@ -4,7 +4,6 @@ import jakarta.jms.ConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
@@ -23,13 +22,13 @@ public class Sample {
 	}
 
 	@Bean
-	public DefaultJmsListenerContainerFactoryConfigurer factory(ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configure){
+	public DefaultJmsListenerContainerFactory myfactory(ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer){
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 		factory.setConnectionFactory(connectionFactory);
 		factory.setSessionTransacted(true);
-		factory.setErrorHandler(error -> logger.error("Exception in Queue Transaction :: " +error.getMessage()));
-		configure.configure(factory, connectionFactory);
-		return configure;
+		configurer.configure(factory, connectionFactory);
+		factory.setErrorHandler(err -> logger.error("Error in Queue Transaction :: {}", err.getMessage()));
+		return factory;
 	}
 
 	@Bean

@@ -6,6 +6,9 @@ spring:
     name: myservice
 
   activemq:
-    broker-url: tcp://LAPTOP-2GEPBFC5:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+    broker-url: tcp://LAPTOP-2GEPBFC5:61616
     user: admin
     password: admin
+
+  logging:
+    mode: debug

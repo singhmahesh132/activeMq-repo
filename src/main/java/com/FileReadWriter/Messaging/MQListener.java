@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MQListener {
     private static final Logger logger = LoggerFactory.getLogger(MQListener.class);
-    @JmsListener(destination="myQueue", containerFactory = "factory")
+    @JmsListener(destination="myQueue", containerFactory = "myfactory")
     public void receiveMessage(String message){
-        logger.info("message is :"+message);
+        logger.info("message is : {}",message);
     }
 }

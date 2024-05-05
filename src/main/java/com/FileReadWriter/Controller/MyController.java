@@ -14,7 +14,7 @@ import java.util.Map;
 public class MyController{
     private static final Logger logger = LoggerFactory.getLogger(MyController.class);
     @Autowired
-    MessageService mservice;
+    MessageService service;
 
     @PostMapping(path = "/readFile")
     public void readFile(@RequestParam(name="filepath") String filepath){
@@ -28,6 +28,6 @@ public class MyController{
         logger.info("in MYController.sendMessage()");
         Map<String,Object> reqVO = request.getData();
         String message = reqVO.get("message").toString();
-        return mservice.pushMessage(message);
+        return service.pushMessage(message);
     }
 }
